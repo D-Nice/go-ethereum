@@ -175,12 +175,12 @@ func (pool *TxPool) validateTx(tx *types.Transaction) error {
 		from common.Address
 		err  error
 	)
-
+/*
 	// Drop transactions under our own minimal accepted gas price
 	if pool.minGasPrice.Cmp(tx.GasPrice()) > 0 {
 		return ErrCheap
 	}
-
+*/
 	// Validate the transaction sender and it's sig. Throw
 	// if the from fields is invalid.
 	if from, err = tx.From(); err != nil {
@@ -207,7 +207,7 @@ func (pool *TxPool) validateTx(tx *types.Transaction) error {
 	if pool.gasLimit().Cmp(tx.Gas()) < 0 {
 		return ErrGasLimit
 	}
-
+/*
 	// Transactions can't be negative. This may never happen
 	// using RLP decoded transactions but may occur if you create
 	// a transaction using the RPC for example.
@@ -221,11 +221,12 @@ func (pool *TxPool) validateTx(tx *types.Transaction) error {
 		return ErrInsufficientFunds
 	}
 
+
 	// Should supply enough intrinsic gas
 	if tx.Gas().Cmp(IntrinsicGas(tx.Data())) < 0 {
 		return ErrIntrinsicGas
 	}
-
+*/
 	return nil
 }
 
